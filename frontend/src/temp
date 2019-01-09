@@ -1,0 +1,10 @@
+<BrowserRouter>
+  <div className="App">
+    <Route exact path = "/" render = {(props) => {
+        return <HomeScreen {...props} username = {this.state.username} onLogin = {this._onLogin}/>;
+      }}/>
+    <Route path = "/images/:imageId" render = {(props) => {
+        return <DetailScreen {...props} username = {this.state.username} onLogin = {this._onLogin}/>;
+      }}/>
+  </div>
+</BrowserRouter>
