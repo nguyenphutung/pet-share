@@ -11,6 +11,7 @@ router.get("/checksession",authMiddleware.authorize, (req, res) => {
     res.status(error.status).send(error.err);
   }
   console.log(req.session);
+  //console.log("hello");
 })
 
 router.post("/", (req, res) => {
@@ -18,6 +19,7 @@ router.post("/", (req, res) => {
     .login(req.body)
     .then(userInfo => {
       req.session.userInfo = userInfo;
+      console.log(userInfo);
       res.send(userInfo);
     })
     .catch(error => res.status(error.status).send(error.err));
