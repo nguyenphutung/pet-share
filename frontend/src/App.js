@@ -19,8 +19,8 @@ class App extends Component {
     axios
     .get("/api/auth/checksession")
     .then(data => {
-      console.log(data.data.username);
-      this.setState({userString: data.data.username})
+        console.log(data.data.username);
+      this.setState({username: data.data.username})
       this.props.history.push("/")
     })
     .catch(err => console.error(err));
