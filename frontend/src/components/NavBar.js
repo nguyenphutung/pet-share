@@ -12,7 +12,7 @@ class NavBar extends Component {
             <img src={logo} alt= "logo"/>
           </div>
           <SearchField onSearchChange= {this.props.onSearchChange}/>
-          <ProfilePanel username = {this.props.username}/>
+          <ProfilePanel username = {this.props.username} onLogout = {this.props.onLogout}/>
         </div>
       </div>
     );

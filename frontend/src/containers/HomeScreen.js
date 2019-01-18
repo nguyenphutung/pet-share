@@ -28,7 +28,7 @@ class HomeScreen extends Component {
     const displayedImages = this.state.images.filter(img => img.title.includes(this.state.searchString) || img.description.includes(this.state.searchString))
     return (
       <div>
-        <NavBar onSearchChange = {this._onSearchChange} username= {this.props.username}/>
+        <NavBar onSearchChange = {this._onSearchChange} username= {this.props.username} onLogout = {this.props.onLogout}/>
         <MainContent images = {displayedImages}/>
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class ProfilePanel extends Component {
   render() {
@@ -14,7 +15,7 @@ class ProfilePanel extends Component {
     return (
       <div className="col-3 profile-panel text-right">
         <span className="navbar-text">Welcome, {this.props.username}</span>
-        <span className="navbar-text">Welcome, {this.props.username}</span>
+        <Link to = {'/login'}><span className="navbar-text" onClick = {this.props.onLogout}>Log out</span></Link>
       </div>
     )
   }

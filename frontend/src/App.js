@@ -47,6 +47,13 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+  _onLogout = (event) => {
+    event.preventDefault();
+    axios
+    .delete("/api/auth")
+    .then (this.props.history.push("/login"))
+  }
+
 
   render() {
     return (
@@ -59,10 +66,10 @@ class App extends Component {
                 this.props.history.push("/login")
                 return "";
               }
-              return <HomeScreen {...props} username = {this.state.username}/>;
+              return <HomeScreen {...props} username = {this.state.username} onLogout = {this._onLogout}/>;
             }}/>
           <Route path = "/images/:imageId" render = {(props) => {
-              return <DetailScreen {...props} username = {this.state.username}/>;
+              return <DetailScreen {...props} username = {this.state.username} onLogout = {this._onLogout}/>;
             }}/>
         </div>
     );

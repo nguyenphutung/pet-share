@@ -20,7 +20,7 @@ class DetailScreen extends Component {
   render () {
     return (
       <div>
-        <NavBar onSearchChange = {this._onSearchChange} username= {this.props.username}/>
+        <NavBar onSearchChange = {this._onSearchChange} username= {this.props.username} onLogout = {this.props.onLogout}/>
         <div className="main_content container">
           <div className = "row">
             <div className = "col-8 mr-auto ml-auto">
