@@ -6,6 +6,17 @@ const upload = multer({ dest: "uploads/" });
 const imageController = require("./controller");
 const authMiddleware = require("../auth/auth");
 
+
+var socket = require('socket.io');
+var app = express();
+server = app.listen(6969, function(){
+    console.log('jdhsgjkshdgsdlglskdjh')
+});
+io = socket(server);
+
+
+
+
 router.get("/", (req, res) => {
   imageController
     .getAllImages(req.query.page || 1)
@@ -68,15 +79,18 @@ router.delete("/:id", authMiddleware.authorize, (req, res) => {
 });
 
 router.post("/:imageId/comments", authMiddleware.authorize, (req, res) => {
-  req.body.userId = req.session.userInfo.id;
-  console.log(res.body);
-  imageController
-    .addComment(req.params.imageId, req.body)
-    .then(result => res.send(result))
-    .catch(err => {
-      console.error(err);
-      res.status(500).send(err);
-    });
+  io.on('connection', (socket) => {
+    console.log(socket.id);
+    req.body.userId = req.session.userInfo.id;
+    console.log(res.body);
+    imageController
+      .addComment(req.params.imageId, req.body)
+      .then(result => res.send(result))
+      .catch(err => {
+        console.error(err);
+        res.status(500).send(err);
+      });
+  }
 });
 
 router.delete(

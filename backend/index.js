@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const config = require("./config-local.json");
 
+//socket
+var socket = require('socket.io');
+
 const app = express();
 
 const imageRouter = require("./modules/api/images/router");
